@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shinigami Playlist</title>
+  <!-- Vue 3 via CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Additional minor styling overrides */
+    html, body { height: 100%; margin: 0; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    /* scrollbars always visible for better usability */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div id="app" class="h-screen flex flex-col">
+    <!-- Top Bar -->
+    <header class="flex items-center justify-between px-4 py-2 bg-white shadow-sm">
+      <div class="flex items-center gap-2">
+        <button @click="onLoadClick" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Load Playlist</button>
+        <button @click="onExportClick" class="px-3 py-1 bg-green-600 text-white rounded text-sm">Export</button>
+        <!-- Profile dropdown -->
+        <div class="relative">
+          <button @click="toggleProfileMenu" class="px-3 py-1 bg-gray-200 rounded text-sm">Profile ▾</button>
+          <div v-if="showProfileMenu" class="absolute z-10 mt-1 w-40 bg-white border rounded shadow-md text-sm">
+            <button @click="importProfile" class="w-full text-left px-2 py-1 hover:bg-gray-100">Import Profile</button>
+            <button @click="exportProfile" class="w-full text-left px-2 py-1 hover:bg-gray-100">Export Profile</button>
+            <button @click="resetProfile" class="w-full text-left px-2 py-1 hover:bg-gray-100">Reset Profile</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-sm">Status:</span>
+        <span :class="['inline-block w-3 h-3 rounded-full', statusColor]"></span>
+      </div>
+    </header>
+    <!-- Hidden file input for uploading local playlist or profile -->
+    <input type="file" ref="fileInput" class="hidden" @change="onFileChosen">
+    <!-- Hidden file input for profile import -->
+    <input type="file" ref="profileInput" class="hidden" @change="onProfileChosen">
+    <!-- Main layout -->
+    <div class="flex flex-1 overflow-hidden">
+      <!-- Left Panel -->
+      <aside class="w-72 max-w-xs bg-white border-r overflow-auto p-3">
+        <!-- Grouping selector -->
+        <div class="mb-4">
+          <div class="font-semibold mb-2 text-sm">Grouping</div>
+          <div class="flex flex-col gap-1 text-sm">
+            <label><input type="radio" v-model="profile.grouping_mode" value="flat"> Flat</label>
+            <label><input type="radio" v-model="profile.grouping_mode" value="category"> Category</label>
+            <label><input type="radio" v-model="profile.grouping_mode" value="region"> Region</label>
+            <label><input type="radio" v-model="profile.grouping_mode" value="source"> Source</label>
+          </div>
+        </div>
+        <!-- Search -->
+        <div class="mb-4">
+          <input v-model="searchQuery" placeholder="Search..." class="w-full border rounded px-2 py-1 text-sm">
+          <label class="mt-1 block text-xs"><input type="checkbox" v-model="searchRegex"> Regex</label>
+        </div>
+        <!-- Filters -->
+        <details class="mb-4" :open="filtersOpen">
+          <summary @click="filtersOpen=!filtersOpen" class="cursor-pointer font-semibold text-sm">Filters</summary>
+          <div class="mt-2 text-sm space-y-2">
+            <div>
+              <label class="block text-xs">Category:</label>
+              <select v-model="filterCategory" class="w-full border px-1 py-1 text-sm">
+                <option value="">All</option>
+                <option v-for="cat in allCategories" :key="cat" :value="cat">{{ cat }}</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs">Region:</label>
+              <select v-model="filterRegion" class="w-full border px-1 py-1 text-sm">
+                <option value="">All</option>
+                <option v-for="reg in allRegions" :key="reg" :value="reg">{{ reg }}</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs">Source:</label>
+              <select v-model="filterSource" class="w-full border px-1 py-1 text-sm">
+                <option value="">All</option>
+                <option v-for="src in allSources" :key="src" :value="src">{{ src }}</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1 text-xs">
+              <label><input type="checkbox" v-model="filterDead"> Show only dead</label>
+              <label><input type="checkbox" v-model="filterDuplicates"> Show only duplicates</label>
+            </div>
+          </div>
+        </details>
+        <!-- Navigation Tree (grouped view) -->
+        <div class="text-sm" v-if="profile.grouping_mode !== 'flat'">
+          <div class="font-semibold mb-1">Navigation</div>
+          <div v-if="profile.grouping_mode === 'category'">
+            <div v-for="(channels, cat) in groupedByCategory" :key="cat" class="mb-1">
+              <details>
+                <summary class="cursor-pointer">{{ cat }} ({{ channels.length }})</summary>
+                <ul class="ml-4 list-disc">
+                  <li v-for="chan in channels" :key="chan.id" @click="scrollToChannel(chan.id)" class="cursor-pointer hover:text-blue-600">{{ chan.name }}</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+          <div v-if="profile.grouping_mode === 'region'">
+            <div v-for="(channels, reg) in groupedByRegion" :key="reg" class="mb-1">
+              <details>
+                <summary class="cursor-pointer">{{ reg }} ({{ channels.length }})</summary>
+                <ul class="ml-4 list-disc">
+                  <li v-for="chan in channels" :key="chan.id" @click="scrollToChannel(chan.id)" class="cursor-pointer hover:text-blue-600">{{ chan.name }}</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+          <div v-if="profile.grouping_mode === 'source'">
+            <div v-for="(channels, src) in groupedBySource" :key="src" class="mb-1">
+              <details>
+                <summary class="cursor-pointer">{{ src }} ({{ channels.length }})</summary>
+                <ul class="ml-4 list-disc">
+                  <li v-for="chan in channels" :key="chan.id" @click="scrollToChannel(chan.id)" class="cursor-pointer hover:text-blue-600">{{ chan.name }}</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- Right Panel -->
+      <main class="flex-1 overflow-auto p-3 flex flex-col">
+        <!-- Tab Bar -->
+        <div class="flex gap-3 border-b pb-2 mb-3 text-sm">
+          <button :class="{'font-semibold border-b-2 border-blue-600 pb-1': activeTab==='channels'}" @click="activeTab='channels'">Channels</button>
+          <button :class="{'font-semibold border-b-2 border-blue-600 pb-1': activeTab==='categoryMap'}" @click="activeTab='categoryMap'">Category Map</button>
+          <button :class="{'font-semibold border-b-2 border-blue-600 pb-1': activeTab==='regionMap'}" @click="activeTab='regionMap'">Region Map</button>
+          <button :class="{'font-semibold border-b-2 border-blue-600 pb-1': activeTab==='renameRules'}" @click="activeTab='renameRules'">Rename Rules</button>
+          <button :class="{'font-semibold border-b-2 border-blue-600 pb-1': activeTab==='stats'}" @click="activeTab='stats'">Stats</button>
+          <button :class="{'font-semibold border-b-2 border-blue-600 pb-1': activeTab==='validation'}" @click="activeTab='validation'">Validation</button>
+        </div>
+        <!-- Channels Tab -->
+        <div v-if="activeTab==='channels'" class="flex-1 flex flex-col overflow-auto">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead class="bg-gray-200 text-left">
+                <tr>
+                  <th class="p-2"><input type="checkbox" v-model="selectAll"></th>
+                  <th class="p-2">Status</th>
+                  <th class="p-2 w-1/3">Name</th>
+                  <th class="p-2">Category</th>
+                  <th class="p-2">Region</th>
+                  <th class="p-2">Source</th>
+                  <th class="p-2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(chan, index) in visibleChannels" :key="chan.id" :ref="setChannelRef(chan.id)" class="border-b hover:bg-gray-50">
+                  <td class="p-2 align-middle"><input type="checkbox" v-model="chan.selected"></td>
+                  <td class="p-2 align-middle">
+                    <span :class="['inline-block w-3 h-3 rounded-full', chan.dead_status==='alive' ? 'bg-green-500' : chan.dead_status==='dead' ? 'bg-red-500' : 'bg-gray-400']"></span>
+                  </td>
+                    <!-- Editable Name -->
+                  <td class="p-2 align-middle">
+                    <input v-model="chan.name" class="w-full border px-1 py-1 text-sm rounded">
+                  </td>
+                  <td class="p-2 align-middle">
+                    <select v-model="chan.category" class="border text-sm px-1 py-1">
+                      <option v-for="cat in allCategoriesList" :key="cat" :value="cat">{{ cat }}</option>
+                    </select>
+                  </td>
+                  <td class="p-2 align-middle">
+                    <select v-model="chan.region" class="border text-sm px-1 py-1">
+                      <option v-for="reg in allRegionsList" :key="reg" :value="reg">{{ reg }}</option>
+                    </select>
+                  </td>
+                  <td class="p-2 align-middle">
+                    <span class="truncate" :title="chan.source">{{ chan.source }}</span>
+                  </td>
+                  <td class="p-2 align-middle flex items-center gap-2">
+                    <button @click="deleteChannel(chan.id)" class="text-red-600 text-xs">Delete</button>
+                    <span class="cursor-move text-gray-400" @mousedown="startDrag(index, $event)">≡</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Batch actions -->
+          <div class="mt-3 flex flex-wrap gap-2 text-sm items-center">
+            <select v-model="batchCategory" class="border px-2 py-1 text-sm">
+              <option value="">Change Category…</option>
+              <option v-for="cat in allCategoriesList" :key="cat" :value="cat">{{ cat }}</option>
+            </select>
+            <select v-model="batchRegion" class="border px-2 py-1 text-sm">
+              <option value="">Change Region…</option>
+              <option v-for="reg in allRegionsList" :key="reg" :value="reg">{{ reg }}</option>
+            </select>
+            <select v-model="batchRule" class="border px-2 py-1 text-sm">
+              <option value="">Apply Rename Rule…</option>
+              <option v-for="(rule, idx) in profile.rename_rules" :key="'simple'+idx" :value="'simple-'+idx">Simple: {{ rule.find }}→{{ rule.replace }}</option>
+              <option v-for="(rule, idx) in profile.regex_rules" :key="'regex'+idx" :value="'regex-'+idx">Regex: /{{ rule.pattern }}/{{ rule.flags }}→{{ rule.replace }}</option>
+            </select>
+            <button @click="applyBatchActions" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Apply</button>
+            <button @click="deleteSelected" class="px-3 py-1 bg-red-600 text-white rounded text-sm">Delete Selected</button>
+            <button @click="createChannel" class="px-3 py-1 bg-gray-600 text-white rounded text-sm">Add Channel</button>
+          </div>
+        </div>
+        <!-- Category Map Tab -->
+        <div v-if="activeTab==='categoryMap'" class="flex-1 overflow-auto">
+          <div class="flex justify-between items-center mb-2">
+            <div class="font-semibold">Category Mapping</div>
+            <button @click="addCategoryMapping" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Add Row</button>
+          </div>
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-200">
+              <tr><th class="p-2">Source</th><th class="p-2">Destination</th><th class="p-2">Actions</th></tr>
+            </thead>
+            <tbody>
+              <tr v-for="(dest, src, idx) in profile.category_mapping" :key="src" class="border-b hover:bg-gray-50">
+                <td class="p-2"><input v-model="mappingInputs[src].source" class="border px-1 py-1 w-full"></td>
+                <td class="p-2"><input v-model="mappingInputs[src].dest" class="border px-1 py-1 w-full"></td>
+                <td class="p-2"><button @click="removeCategoryMapping(src)" class="text-red-600 text-xs">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Region Map Tab -->
+        <div v-if="activeTab==='regionMap'" class="flex-1 overflow-auto">
+          <div class="flex justify-between items-center mb-2">
+            <div class="font-semibold">Region Mapping</div>
+            <button @click="addRegionMapping" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Add Row</button>
+          </div>
+          <table class="min-w-full text-sm">
+            <thead class="bg-gray-200"><tr><th class="p-2">Source</th><th class="p-2">Destination</th><th class="p-2">Actions</th></tr></thead>
+            <tbody>
+              <tr v-for="(dest, src) in profile.region_mapping" :key="src" class="border-b hover:bg-gray-50">
+                <td class="p-2"><input v-model="regionInputs[src].source" class="border px-1 py-1 w-full"></td>
+                <td class="p-2"><input v-model="regionInputs[src].dest" class="border px-1 py-1 w-full"></td>
+                <td class="p-2"><button @click="removeRegionMapping(src)" class="text-red-600 text-xs">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Rename Rules Tab -->
+        <div v-if="activeTab==='renameRules'" class="flex-1 overflow-auto space-y-4">
+          <div>
+            <div class="flex justify-between items-center mb-2"><div class="font-semibold">Simple Patterns</div><button @click="addSimpleRule" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Add</button></div>
+            <table class="min-w-full text-sm">
+              <thead class="bg-gray-200"><tr><th class="p-2">Find</th><th class="p-2">Replace</th><th class="p-2">Actions</th></tr></thead>
+              <tbody>
+                <tr v-for="(rule, idx) in profile.rename_rules" :key="'simple-'+idx" class="border-b hover:bg-gray-50">
+                  <td class="p-2"><input v-model="profile.rename_rules[idx].find" class="border px-1 py-1 w-full"></td>
+                  <td class="p-2"><input v-model="profile.rename_rules[idx].replace" class="border px-1 py-1 w-full"></td>
+                  <td class="p-2"><button @click="removeSimpleRule(idx)" class="text-red-600 text-xs">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2"><div class="font-semibold">Regex Rules</div><button @click="addRegexRule" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">Add</button></div>
+            <table class="min-w-full text-sm">
+              <thead class="bg-gray-200"><tr><th class="p-2">Pattern</th><th class="p-2">Flags</th><th class="p-2">Replace</th><th class="p-2">Actions</th></tr></thead>
+              <tbody>
+                <tr v-for="(rule, idx) in profile.regex_rules" :key="'regex-'+idx" class="border-b hover:bg-gray-50">
+                  <td class="p-2"><input v-model="profile.regex_rules[idx].pattern" class="border px-1 py-1 w-full"></td>
+                  <td class="p-2"><input v-model="profile.regex_rules[idx].flags" class="border px-1 py-1 w-full"></td>
+                  <td class="p-2"><input v-model="profile.regex_rules[idx].replace" class="border px-1 py-1 w-full"></td>
+                  <td class="p-2"><button @click="removeRegexRule(idx)" class="text-red-600 text-xs">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Stats Tab -->
+        <div v-if="activeTab==='stats'" class="overflow-auto">
+          <div class="font-semibold mb-2">Statistics</div>
+          <p>Total channels: {{ channels.length }}</p>
+          <div class="mt-2">
+            <div class="font-semibold">Categories:</div>
+            <ul class="ml-4 list-disc text-sm">
+              <li v-for="(count, cat) in stats.categories" :key="cat">{{ cat }}: {{ count }}</li>
+            </ul>
+          </div>
+          <div class="mt-2">
+            <div class="font-semibold">Regions:</div>
+            <ul class="ml-4 list-disc text-sm">
+              <li v-for="(count, reg) in stats.regions" :key="reg">{{ reg }}: {{ count }}</li>
+            </ul>
+          </div>
+          <div class="mt-2">
+            <p>Duplicates: {{ stats.duplicates }}</p>
+            <p>Dead channels: {{ stats.dead }}</p>
+          </div>
+        </div>
+        <!-- Validation Tab -->
+        <div v-if="activeTab==='validation'" class="overflow-auto">
+          <div class="font-semibold mb-2">Validation</div>
+          <ul class="text-sm">
+            <li v-for="(msg, idx) in validationMessages" :key="idx" class="mb-1">{{ msg }}</li>
+          </ul>
+        </div>
+        <!-- Bottom processing pipeline -->
+        <div class="mt-4 border-t pt-3">
+          <div class="font-semibold mb-2 text-sm">Processing Pipeline</div>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label><input type="checkbox" v-model="pipeline.combine"> Combine Playlists</label>
+            <label><input type="checkbox" v-model="pipeline.applyCategoryMapping"> Apply Category Mapping</label>
+            <label><input type="checkbox" v-model="pipeline.applyRegionMapping"> Apply Region Mapping</label>
+            <label><input type="checkbox" v-model="pipeline.smartCategory"> Smart Category Detection</label>
+            <label><input type="checkbox" v-model="pipeline.smartRegion"> Smart Region Detection</label>
+            <label><input type="checkbox" v-model="pipeline.nameTransformations"> Name Transformations</label>
+            <label><input type="checkbox" v-model="pipeline.regexTransformations"> Regex Transformations</label>
+            <label><input type="checkbox" v-model="pipeline.removeDuplicates"> Remove Duplicates</label>
+            <label><input type="checkbox" v-model="pipeline.deadCheck"> Dead Link Check</label>
+            <label><input type="checkbox" v-model="pipeline.sort"> Sort by Priority</label>
+            <label><input type="checkbox" v-model="pipeline.cleanNaming"> Clean Naming Patterns</label>
+          </div>
+          <div class="mt-3">
+            <button @click="runPipeline" class="px-6 py-2 bg-blue-600 text-white rounded text-sm">Run</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <!-- Vue App Script -->
+  <script>
+  const { createApp, reactive, ref, computed, watch } = Vue;
+
+  function generateUUID() {
+    // simple UUID generator for channel IDs
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  function defaultProfile() {
+    return {
+      sources_history: [],
+      rename_rules: [],
+      regex_rules: [],
+      category_mapping: {},
+      region_mapping: {},
+      category_priorities: {},
+      dead_timeout: 2000, // milliseconds
+      visibility_filters: {},
+      grouping_mode: 'flat',
+      history_of_imported_playlists: [],
+      autosave_timestamp: Date.now(),
+    };
+  }
+
+  const app = createApp({
+    setup() {
+      const channels = reactive([]);
+      const channelRefs = reactive({});
+      const profile = reactive(loadProfile());
+      const showProfileMenu = ref(false);
+      const activeTab = ref('channels');
+      const searchQuery = ref('');
+      const searchRegex = ref(false);
+      const filtersOpen = ref(false);
+      const filterCategory = ref('');
+      const filterRegion = ref('');
+      const filterSource = ref('');
+      const filterDead = ref(false);
+      const filterDuplicates = ref(false);
+      const selectAll = ref(false);
+      const batchCategory = ref('');
+      const batchRegion = ref('');
+      const batchRule = ref('');
+      // references to hidden file inputs for playlist and profile
+      const fileInputRef = ref(null);
+      const profileInputRef = ref(null);
+      // mapping inputs for editing mapping table
+      const mappingInputs = reactive({});
+      const regionInputs = reactive({});
+      // pipeline checkboxes
+      const pipeline = reactive({
+        combine: true,
+        applyCategoryMapping: true,
+        applyRegionMapping: true,
+        smartCategory: false,
+        smartRegion: false,
+        nameTransformations: true,
+        regexTransformations: true,
+        removeDuplicates: true,
+        deadCheck: true,
+        sort: true,
+        cleanNaming: true,
+      });
+      // when selectAll is toggled, update each channel's selected flag
+      watch(selectAll, (val) => {
+        channels.forEach(ch => { ch.selected = val; });
+      });
+      // compute selectAll when channel selection changes
+      watch(() => channels.map(ch => ch.selected).join(','), () => {
+        const allSel = channels.length > 0 && channels.every(ch => ch.selected);
+        if (selectAll.value !== allSel) selectAll.value = allSel;
+      });
+      // autosave profile only on explicit updates (e.g. runPipeline, mapping edits)
+      // remove heavy deep watchers on channels to improve responsiveness
+      // computed lists of categories and regions from channels and mappings
+      const allCategoriesList = computed(() => {
+        const set = new Set();
+        channels.forEach(ch => { if (ch.category) set.add(ch.category); });
+        Object.keys(profile.category_mapping).forEach(src => set.add(src));
+        Object.values(profile.category_mapping).forEach(dest => set.add(dest));
+        return Array.from(set).sort();
+      });
+      const allRegionsList = computed(() => {
+        const set = new Set();
+        channels.forEach(ch => { if (ch.region) set.add(ch.region); });
+        Object.keys(profile.region_mapping).forEach(src => set.add(src));
+        Object.values(profile.region_mapping).forEach(dest => set.add(dest));
+        return Array.from(set).sort();
+      });
+      const allCategories = computed(() => allCategoriesList.value);
+      const allRegions = computed(() => allRegionsList.value);
+      const allSources = computed(() => {
+        const set = new Set();
+        channels.forEach(ch => set.add(ch.source));
+        return Array.from(set).sort();
+      });
+      // groupings
+      const groupedByCategory = computed(() => {
+        const map = {};
+        channels.forEach(ch => {
+          if (!map[ch.category]) map[ch.category] = [];
+          map[ch.category].push(ch);
+        });
+        return map;
+      });
+      const groupedByRegion = computed(() => {
+        const map = {};
+        channels.forEach(ch => {
+          if (!map[ch.region]) map[ch.region] = [];
+          map[ch.region].push(ch);
+        });
+        return map;
+      });
+      const groupedBySource = computed(() => {
+        const map = {};
+        channels.forEach(ch => {
+          if (!map[ch.source]) map[ch.source] = [];
+          map[ch.source].push(ch);
+        });
+        return map;
+      });
+      // visible channels after search and filters
+      const visibleChannels = computed(() => {
+        let list = channels;
+        // search filter
+        if (searchQuery.value) {
+          const q = searchQuery.value;
+          try {
+            if (searchRegex.value) {
+              const regex = new RegExp(q, 'i');
+              list = list.filter(ch => regex.test(ch.name) || regex.test(ch.url) || regex.test(ch.category) || regex.test(ch.region));
+            } else {
+              const lower = q.toLowerCase();
+              list = list.filter(ch => ch.name.toLowerCase().includes(lower) || ch.url.toLowerCase().includes(lower) || (ch.category && ch.category.toLowerCase().includes(lower)) || (ch.region && ch.region.toLowerCase().includes(lower)));
+            }
+          } catch (e) {
+            // invalid regex
+          }
+        }
+        // category filter
+        if (filterCategory.value) {
+          list = list.filter(ch => ch.category === filterCategory.value);
+        }
+        // region filter
+        if (filterRegion.value) {
+          list = list.filter(ch => ch.region === filterRegion.value);
+        }
+        // source filter
+        if (filterSource.value) {
+          list = list.filter(ch => ch.source === filterSource.value);
+        }
+        // dead filter
+        if (filterDead.value) {
+          list = list.filter(ch => ch.dead_status === 'dead');
+        }
+        // duplicates filter
+        if (filterDuplicates.value) {
+          list = list.filter(ch => ch.duplicate === true);
+        }
+        return list;
+      });
+      // stats
+      const stats = computed(() => {
+        const categories = {};
+        const regions = {};
+        let duplicates = 0;
+        let dead = 0;
+        channels.forEach(ch => {
+          categories[ch.category] = (categories[ch.category] || 0) + 1;
+          regions[ch.region] = (regions[ch.region] || 0) + 1;
+          if (ch.duplicate) duplicates++;
+          if (ch.dead_status === 'dead') dead++;
+        });
+        return { categories, regions, duplicates, dead };
+      });
+      // validation messages
+      const validationMessages = computed(() => {
+        const msgs = [];
+        // missing url
+        channels.forEach(ch => {
+          if (!ch.url) msgs.push(`Channel "${ch.name}" missing URL.`);
+        });
+        // unknown categories (not in mapping dest list)
+        channels.forEach(ch => {
+          // categories mapping dest may not include ch.category if mapping not defined; treat unknown categories as allowed
+        });
+        // invalid regex patterns
+        profile.regex_rules.forEach((rule, idx) => {
+          try {
+            new RegExp(rule.pattern, rule.flags);
+          } catch (e) {
+            msgs.push(`Invalid regex at rule ${idx}: ${rule.pattern}`);
+          }
+        });
+        // duplicates highlight
+        if (stats.value.duplicates > 0) msgs.push(`${stats.value.duplicates} duplicate channels detected.`);
+        return msgs;
+      });
+      // status color for header indicator
+      const statusColor = computed(() => {
+        return validationMessages.value.length > 0 ? 'bg-red-500' : 'bg-green-500';
+      });
+      /* ========== functions ========== */
+      function loadProfile() {
+        try {
+          const data = localStorage.getItem('shinigami_profile');
+          if (data) return JSON.parse(data);
+        } catch (e) { }
+        return defaultProfile();
+      }
+      function saveProfile(data) {
+        try {
+          localStorage.setItem('shinigami_profile', JSON.stringify(data));
+        } catch (e) { }
+      }
+      function toggleProfileMenu() {
+        showProfileMenu.value = !showProfileMenu.value;
+      }
+      function onLoadClick() {
+        // open file chooser; also allow to input URL via prompt
+        const choice = window.prompt('Enter a playlist URL or leave blank to upload a local file');
+        if (choice && choice.trim()) {
+          // treat as URL
+          loadFromUrl(choice.trim());
+        } else {
+          // open file input via ref
+          if (fileInputRef.value) {
+            fileInputRef.value.value = '';
+            fileInputRef.value.click();
+          }
+        }
+      }
+      function onExportClick() {
+        const format = window.prompt('Enter export format (m3u, m3u8, json, csv, tsv)');
+        if (!format) return;
+        exportPlaylist(format.trim().toLowerCase());
+      }
+      function onFileChosen(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const content = e.target.result;
+          const filename = file.name;
+          importPlaylistContent(content, filename);
+          if (!profile.history_of_imported_playlists.includes(filename)) profile.history_of_imported_playlists.push(filename);
+        };
+        reader.readAsText(file);
+      }
+      function onProfileChosen(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            const data = JSON.parse(e.target.result);
+            Object.keys(profile).forEach(k => delete profile[k]);
+            Object.assign(profile, data);
+            // load channels if profile includes saved channels
+            if (data.channels) {
+              channels.splice(0, channels.length, ...data.channels);
+            }
+            alert('Profile imported successfully');
+          } catch (err) {
+            alert('Failed to import profile');
+          }
+        };
+        reader.readAsText(file);
+      }
+      function importProfile() {
+        // open file picker for profile
+        if (profileInputRef.value) {
+          profileInputRef.value.value = '';
+          profileInputRef.value.click();
+        }
+        showProfileMenu.value = false;
+      }
+      function exportProfile() {
+        const data = JSON.stringify({ ...profile, channels: channels });
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'shinigami_profile.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showProfileMenu.value = false;
+      }
+      function resetProfile() {
+        if (confirm('Are you sure you want to reset your profile? This will remove all saved settings.')) {
+          Object.keys(profile).forEach(k => delete profile[k]);
+          Object.assign(profile, defaultProfile());
+          // also clear channels
+          channels.splice(0, channels.length);
+          alert('Profile reset.');
+        }
+        showProfileMenu.value = false;
+      }
+      async function loadFromUrl(url) {
+        try {
+          const response = await fetch(url);
+          const contentType = response.headers.get('content-type');
+          const text = await response.text();
+          importPlaylistContent(text, url);
+          if (!profile.history_of_imported_playlists.includes(url)) profile.history_of_imported_playlists.push(url);
+        } catch (e) {
+          alert('Failed to load URL');
+        }
+      }
+      function importPlaylistContent(content, source) {
+        // determine format by content; try M3U, JSON, CSV/TSV
+        const trimmed = content.trim();
+        if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
+          // JSON
+          try {
+            const data = JSON.parse(trimmed);
+            if (Array.isArray(data)) {
+              data.forEach(item => addChannelFromObject(item, source));
+            } else if (data.channels) {
+              data.channels.forEach(item => addChannelFromObject(item, source));
+            }
+          } catch (e) {
+            alert('Invalid JSON file');
+          }
+        } else if (trimmed.startsWith('#EXTM3U')) {
+          const arr = parseM3U(content, source);
+          arr.forEach(ch => channels.push(ch));
+        } else if (trimmed.includes(',') || trimmed.includes('\t')) {
+          // CSV or TSV
+          const delim = trimmed.includes('\t') ? '\t' : ',';
+          const arr = parseCSV(content, delim, source);
+          arr.forEach(ch => channels.push(ch));
+        } else {
+          // treat each line as url; name unknown
+          trimmed.split(/\r?\n/).forEach(line => {
+            const urlLine = line.trim();
+            if (urlLine) {
+              channels.push({ id: generateUUID(), name: urlLine, url: urlLine, category: 'Undefined', region: 'Undefined', source: source, metadata: {}, dead_status: 'unknown' });
+            }
+          });
+        }
+      }
+      function addChannelFromObject(obj, source) {
+        const ch = {
+          id: obj.id || generateUUID(),
+          name: obj.name || '',
+          url: obj.url || '',
+          category: obj.category || 'Undefined',
+          region: obj.region || 'Undefined',
+          source: obj.source || source,
+          metadata: obj.metadata || {},
+          dead_status: obj.dead_status || 'unknown',
+        };
+        channels.push(ch);
+      }
+      function parseM3U(text, source) {
+        const lines = text.replace(/\r/g, '').split('\n');
+        const results = [];
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (line.startsWith('#EXTINF')) {
+            const commaIndex = line.indexOf(',');
+            let metaPart = line.substring(8, commaIndex).trim();
+            let name = line.substring(commaIndex + 1).trim();
+            const attrs = {};
+            const regex = /(\w+(?:-\w+)*)="([^"]*)"/g;
+            let m;
+            while ((m = regex.exec(metaPart)) !== null) {
+              attrs[m[1]] = m[2];
+            }
+            const url = (lines[i + 1] || '').trim();
+            const channel = {
+              id: generateUUID(),
+              name: name,
+              url: url,
+              category: attrs['group-title'] || attrs['group_title'] || 'Undefined',
+              region: 'Undefined',
+              source: source,
+              metadata: {
+                tvg_id: attrs['tvg-id'] || attrs['tvg_id'] || '',
+                tvg_logo: attrs['tvg-logo'] || attrs['tvg_logo'] || '',
+                group_title: attrs['group-title'] || attrs['group_title'] || '',
+              },
+              dead_status: 'unknown',
+            };
+            results.push(channel);
+            i++; // skip next line (url)
+          }
+        }
+        return results;
+      }
+      function parseCSV(text, delim, source) {
+        const lines = text.replace(/\r/g, '').split('\n');
+        const header = lines.shift().split(delim).map(h => h.trim().toLowerCase());
+        const results = [];
+        lines.forEach(l => {
+          if (!l.trim()) return;
+          const cols = l.split(delim);
+          const record = {};
+          header.forEach((key, idx) => record[key] = cols[idx] || '');
+          const ch = {
+            id: generateUUID(),
+            name: record.name || '',
+            url: record.url || '',
+            category: record.category || 'Undefined',
+            region: record.region || 'Undefined',
+            source: source,
+            metadata: {},
+            dead_status: 'unknown'
+          };
+          results.push(ch);
+        });
+        return results;
+      }
+      function exportPlaylist(format) {
+        let content = '';
+        if (format === 'json') {
+          content = JSON.stringify(channels, null, 2);
+        } else if (format === 'csv' || format === 'tsv') {
+          const delim = format === 'csv' ? ',' : '\t';
+          const header = ['name','url','category','region','source'];
+          const rows = channels.map(ch => [ch.name, ch.url, ch.category, ch.region, ch.source]);
+          content = header.join(delim) + '\n' + rows.map(r => r.map(col => col.includes(delim) ? `"${col}"` : col).join(delim)).join('\n');
+        } else {
+          // M3U or M3U8
+          content = '#EXTM3U\n';
+          channels.forEach(ch => {
+            const attrs = [];
+            if (ch.metadata.tvg_id) attrs.push(`tvg-id="${ch.metadata.tvg_id}"`);
+            if (ch.metadata.tvg_logo) attrs.push(`tvg-logo="${ch.metadata.tvg_logo}"`);
+            if (ch.category) attrs.push(`group-title="${ch.category}"`);
+            content += `#EXTINF:-1 ${attrs.join(' ')} ,${ch.name}\n${ch.url}\n`;
+          });
+        }
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'playlist.' + (format === 'm3u' || format === 'm3u8' ? 'm3u' : format);
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+      function scrollToChannel(id) {
+        const el = channelRefs[id];
+        if (el && el[0]) {
+          el[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+      function setChannelRef(id) {
+        return (el) => {
+          if (!channelRefs[id]) channelRefs[id] = [];
+          channelRefs[id][0] = el;
+        };
+      }
+      function deleteChannel(id) {
+        const idx = channels.findIndex(ch => ch.id === id);
+        if (idx !== -1) channels.splice(idx, 1);
+      }
+      function applyBatchActions() {
+        channels.forEach(ch => {
+          if (ch.selected) {
+            if (batchCategory.value) ch.category = batchCategory.value;
+            if (batchRegion.value) ch.region = batchRegion.value;
+            if (batchRule.value) {
+              const [type, index] = batchRule.value.split('-');
+              if (type === 'simple') {
+                const rule = profile.rename_rules[parseInt(index)];
+                if (rule) ch.name = ch.name.split(rule.find).join(rule.replace);
+              } else if (type === 'regex') {
+                const rule = profile.regex_rules[parseInt(index)];
+                try {
+                  const regex = new RegExp(rule.pattern, rule.flags);
+                  ch.name = ch.name.replace(regex, rule.replace);
+                } catch (e) { }
+              }
+            }
+            ch.selected = false;
+          }
+        });
+        batchCategory.value = '';
+        batchRegion.value = '';
+        batchRule.value = '';
+      }
+      function deleteSelected() {
+        for (let i = channels.length - 1; i >= 0; i--) {
+          if (channels[i].selected) channels.splice(i, 1);
+        }
+      }
+      function createChannel() {
+        const name = prompt('Enter channel name');
+        if (!name) return;
+        const url = prompt('Enter channel URL');
+        if (!url) return;
+        channels.push({ id: generateUUID(), name: name, url: url, category: 'Undefined', region: 'Undefined', source: 'Manual', metadata: {}, dead_status: 'unknown' });
+      }
+      // Category mapping editing
+      function addCategoryMapping() {
+        const newSrc = prompt('Enter source category');
+        if (!newSrc) return;
+        const newDest = prompt('Enter destination category');
+        if (!newDest) return;
+        profile.category_mapping[newSrc] = newDest;
+        mappingInputs[newSrc] = { source: newSrc, dest: newDest };
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      function removeCategoryMapping(src) {
+        delete profile.category_mapping[src];
+        delete mappingInputs[src];
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      // Region mapping editing
+      function addRegionMapping() {
+        const src = prompt('Enter source region code');
+        if (!src) return;
+        const dest = prompt('Enter destination region');
+        if (!dest) return;
+        profile.region_mapping[src] = dest;
+        regionInputs[src] = { source: src, dest: dest };
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      function removeRegionMapping(src) {
+        delete profile.region_mapping[src];
+        delete regionInputs[src];
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      // rename rules editing
+      function addSimpleRule() {
+        profile.rename_rules.push({ find: '', replace: '' });
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      function removeSimpleRule(idx) {
+        profile.rename_rules.splice(idx, 1);
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      function addRegexRule() {
+        profile.regex_rules.push({ pattern: '', flags: 'gi', replace: '' });
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      function removeRegexRule(idx) {
+        profile.regex_rules.splice(idx, 1);
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      // Pipeline run
+      function runPipeline() {
+        // Combine step: here nothing to do since channels already unified
+        if (pipeline.applyCategoryMapping) {
+          channels.forEach(ch => {
+            if (profile.category_mapping[ch.category]) {
+              ch.category = profile.category_mapping[ch.category];
+            }
+          });
+        }
+        if (pipeline.applyRegionMapping) {
+          channels.forEach(ch => {
+            if (profile.region_mapping[ch.region]) {
+              ch.region = profile.region_mapping[ch.region];
+            }
+          });
+        }
+        if (pipeline.smartCategory) {
+          // Always derive category from the M3U group-title if available; otherwise use heuristics
+          channels.forEach(ch => {
+            let assigned = false;
+            if (ch.metadata && ch.metadata.group_title) {
+              ch.category = ch.metadata.group_title;
+              assigned = true;
+            }
+            if (!assigned) {
+              const target = (ch.name + ' ' + (ch.metadata.group_title || '')).toLowerCase();
+              if (/\b(news|journal|news channel)\b/.test(target)) ch.category = 'News';
+              else if (/\b(kids|cartoon|child)\b/.test(target)) ch.category = 'Kids';
+              else if (/\b(doc|docs|documentary)\b/.test(target)) ch.category = 'Docs';
+              else if (/\b(movie|cinema|film)\b/.test(target)) ch.category = 'Movies';
+              else if (/\b(music|radio)\b/.test(target)) ch.category = 'Music';
+              else if (/\b(sport|sports|game)\b/.test(target)) ch.category = 'Sports';
+              else ch.category = 'Misc';
+            }
+          });
+        }
+        if (pipeline.smartRegion) {
+          // Always derive region code from the source playlist filename or URL parts
+          channels.forEach(ch => {
+            let code = '';
+            try {
+              const src = ch.source || '';
+              const urlPart = src.split('?')[0];
+              const segments = urlPart.split(/[\/]/);
+              let filename = segments.pop() || '';
+              filename = filename.replace(/\.m3u8?$/i, '');
+              if (!filename && segments.length) filename = segments.pop();
+              const tokens = filename.split(/[-_]/);
+              code = tokens[0] || filename;
+            } catch (e) {}
+            if (code) {
+              if (profile.region_mapping[code]) ch.region = profile.region_mapping[code];
+              else ch.region = code;
+            }
+          });
+        }
+        if (pipeline.nameTransformations) {
+          channels.forEach(ch => {
+            profile.rename_rules.forEach(rule => {
+              if (!rule.find) return;
+              ch.name = ch.name.split(rule.find).join(rule.replace);
+            });
+          });
+        }
+        if (pipeline.regexTransformations) {
+          channels.forEach(ch => {
+            profile.regex_rules.forEach(rule => {
+              try {
+                const regex = new RegExp(rule.pattern, rule.flags);
+                ch.name = ch.name.replace(regex, rule.replace);
+              } catch (e) { }
+            });
+          });
+        }
+        if (pipeline.removeDuplicates) {
+          // mark duplicates then remove later
+          const map = {};
+          channels.forEach(ch => {
+            const key = (ch.url || ch.name).toLowerCase();
+            if (map[key]) {
+              ch.duplicate = true;
+            } else {
+              map[key] = true;
+              ch.duplicate = false;
+            }
+          });
+          // remove duplicates from list (keeping first occurrences)
+          for (let i = channels.length - 1; i >= 0; i--) {
+            if (channels[i].duplicate) channels.splice(i, 1);
+          }
+        }
+        if (pipeline.deadCheck) {
+          // asynchronously check dead status for each channel
+          const timeout = profile.dead_timeout;
+          channels.forEach(ch => {
+            ch.dead_status = 'unknown';
+          });
+          channels.forEach(ch => {
+            checkDead(ch.url, timeout).then(result => {
+              ch.dead_status = result;
+            });
+          });
+        }
+        if (pipeline.sort) {
+          channels.sort((a, b) => {
+            const pa = profile.category_priorities[a.category] ?? Number.MAX_SAFE_INTEGER;
+            const pb = profile.category_priorities[b.category] ?? Number.MAX_SAFE_INTEGER;
+            if (pa !== pb) return pa - pb;
+            return a.name.localeCompare(b.name);
+          });
+        }
+        if (pipeline.cleanNaming) {
+          channels.forEach(ch => {
+            // remove resolution patterns like (720p), (1080p), HD, FullHD, etc.
+            ch.name = ch.name.replace(/\((\d+p|HD|FHD|4K)\)/gi, '').replace(/\bHD\b/gi, '').replace(/\bFHD\b/gi, '').replace(/\b4K\b/gi, '').replace(/\s{2,}/g, ' ').trim();
+          });
+        }
+        // update mapping inputs
+        syncMappingInputs();
+        // autosave profile after running pipeline
+        profile.autosave_timestamp = Date.now();
+        saveProfile(profile);
+      }
+      // utility for dead link check
+      async function checkDead(url, timeout) {
+        // If URL is empty, mark as dead
+        if (!url) return 'dead';
+        return new Promise(resolve => {
+          const controller = new AbortController();
+          const timer = setTimeout(() => {
+            controller.abort();
+            resolve('dead');
+          }, timeout);
+          fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal }).then(res => {
+            clearTimeout(timer);
+            // no-cors always results in opaque response; treat as alive
+            resolve('alive');
+          }).catch(() => {
+            clearTimeout(timer);
+            resolve('dead');
+          });
+        });
+      }
+      // sync mappingInputs with profile
+      function syncMappingInputs() {
+        Object.keys(profile.category_mapping).forEach(src => {
+          mappingInputs[src] = mappingInputs[src] || { source: src, dest: profile.category_mapping[src] };
+          mappingInputs[src].source = src;
+          mappingInputs[src].dest = profile.category_mapping[src];
+        });
+        Object.keys(profile.region_mapping).forEach(src => {
+          regionInputs[src] = regionInputs[src] || { source: src, dest: profile.region_mapping[src] };
+          regionInputs[src].source = src;
+          regionInputs[src].dest = profile.region_mapping[src];
+        });
+      }
+      // sync mapping inputs with profile when app mounts
+      syncMappingInputs();
+
+      // Auto-save profile is managed explicitly when rules are added or removed.
+      return {
+        channels,
+        profile,
+        showProfileMenu,
+        toggleProfileMenu,
+        onLoadClick,
+        onExportClick,
+        onFileChosen,
+        onProfileChosen,
+        importProfile,
+        exportProfile,
+        resetProfile,
+        mappingInputs,
+        regionInputs,
+        activeTab,
+        searchQuery,
+        searchRegex,
+        filtersOpen,
+        filterCategory,
+        filterRegion,
+        filterSource,
+        filterDead,
+        filterDuplicates,
+        selectAll,
+        batchCategory,
+        batchRegion,
+        batchRule,
+        pipeline,
+        allCategoriesList,
+        allRegionsList,
+        allCategories,
+        allRegions,
+        allSources,
+        groupedByCategory,
+        groupedByRegion,
+        groupedBySource,
+        visibleChannels,
+        stats,
+        validationMessages,
+        statusColor,
+        setChannelRef,
+        deleteChannel,
+        applyBatchActions,
+        deleteSelected,
+        createChannel,
+        addCategoryMapping,
+        removeCategoryMapping,
+        addRegionMapping,
+        removeRegionMapping,
+        addSimpleRule,
+        removeSimpleRule,
+        addRegexRule,
+        removeRegexRule,
+        runPipeline,
+        fileInput: fileInputRef,
+        profileInput: profileInputRef,
+        onFileChosen,
+        onProfileChosen,
+      };
+    },
+  });
+  app.mount('#app');
+  </script>
+</body>
+</html>
