@@ -1,6 +1,6 @@
 # Shinigami Playlist
 
-<img src="./logo.svg" alt="Logo" width="200">
+<img src="./logo.svg" alt="Logo" width="50">
     
 **The Client-Side M3U Manager.**
 
