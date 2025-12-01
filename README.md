@@ -6,6 +6,10 @@
 
 Shinigami Playlist is a modern, privacy-first web application designed to help you manage, clean, and organize your IPTV playlists directly in your browser. No backend server, no data uploads, no AI—just you and your media.
 
+**Screenshot**
+
+![Screenshot](./screenshot.png "Shinigami Playlist")
+
 ## 🚀 Key Features
 
 *   **100% Client-Side:** Your playlists never leave your device. All processing happens locally in your browser.
