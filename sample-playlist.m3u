@@ -369,8 +369,6 @@ https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/arab
 https://viamotionhsi.netplus.ch/live/eds/artehd/browser-HLS8/artehd.m3u8
 #EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://i.imgur.com/RyVEFcG.png",B Smart TV
 https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/bsmart.m3u8
-#EXTINF:-1 group-title="FRA ↬ Kidz" tvg-logo="https://i.imgur.com/WxLHBwu.png",BabyFirst
-https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/c8d16110-566c-4e95-a1df-55d175e9e201/manifest.m3u8
 #EXTINF:-1 group-title="FRA ↬ Music" tvg-logo="https://i.imgur.com/0DUprIW.png",Bel RTL
 https://bel-live-hls.akamaized.net/hls/live/2038650/BEL-Live-HLS/master.m3u8
 #EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://i.imgur.com/iRsbEpg.png",BFM Alsace
@@ -649,8 +647,6 @@ https://vdo2.pro-fhi.net:3297/stream/play.m3u8
 https://stream.sen-gt.com/senjeunestv/myStream/playlist.m3u8
 #EXTINF:-1 group-title="FRA ↬ Music" tvg-logo="https://i.imgur.com/nh1k5RC.png",Stingray Classica
 https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8
-#EXTINF:-1 group-title="FRA ↬ Docs" tvg-logo="https://i.imgur.com/ZBV6xph.png",StoryChannel TV
-https://136044159.r.cdnsun.net/storychannel.m3u8
 #EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://www.sudradio.fr/wp-content/themes/sud-2023/assets/img/logo-fondblanc-parlons.png",Sud Radio
 https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/sudradio.m3u8
 #EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Logo_de_la_chaine_T18.svg/langfr-512px-Logo_de_la_chaine_T18.svg.png",T18
@@ -701,8 +697,6 @@ https://lightning-traceurban-samsungau.amagi.tv/playlist.m3u8
 https://viamotionhsi.netplus.ch/live/eds/escales/browser-HLS8/escales.m3u8
 #EXTINF:-1 group-title="FRA ↬ Déprime" tvg-logo="https://i.imgur.com/qtiGLzZ.png",Trends Z
 https://d1hz1p2gea2zy4.cloudfront.net/live/rmgtv/RMG-TRENDSZFR-LIVE/index.m3u8
-#EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://i.imgur.com/VEb631f.png",TV2
-https://viamotionhsi.netplus.ch/live/eds/canalalgerie/browser-dash/canalalgerie.mpd
 #EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://i.ibb.co/X2yd0zL/logo-tv3v.jpg",TV3V
 https://tv3v.live-kd.com/live/tv3v/livestream/index.m3u8
 #EXTINF:-1 group-title="FRA ↬ General" tvg-logo="https://i.imgur.com/WmRbudc.png",TV5Monde France Belgium Switzerland Monaco HD
@@ -727,8 +721,6 @@ https://vosgestv.live-kd.com/live/vosgestv/vosgestv/playlist.m3u8
 https://viamotionhsi.netplus.ch/live/eds/w9/browser-HLS8/w9.m3u8
 #EXTINF:-1 group-title="FRA ↬ Kidz" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_k6spR1AVLZ0ISqrFP-Z9JeBMHPpAc9T-pmFlG6_lSkNw=s160-c-k-c0x00ffffff-no-rj",XilamTV
 https://xilam-animation-1-fr.samsung.wurl.tv/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Science" tvg-logo="https://i.imgur.com/FQ0FpXV.png",BFM Tech & Co
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TECHANDCO/index.m3u8?end=END&start=LIVE
 #EXTINF:-1 group-title="GEN ↬ Science" tvg-logo="https://i.imgur.com/CBbbrkI.png",Hiperconectados TV
 https://cdn-edge1.cef-technology.com/chf-cdn/hiper_tv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Science" tvg-logo="https://i.imgur.com/MDULX7X.png",Ilm va Tabiat
@@ -755,12 +747,8 @@ https://daiconnect.com/live/hls/tvup/rk-cartoonclassics/578f4b7eb725168349ec0af8
 https://backend.energeek.cl/webtv/egretroweb/index.m3u8?token=ZZDemoIPTVGH
 #EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3027-294x165-FFFFFF.jpg",Extrema Kids TV ⌛
 https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://i.imgur.com/UHkaObv.png",Game One
-https://viamotionhsi.netplus.ch/live/eds/gameone/browser-HLS8/gameone.m3u8
 #EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://i.imgur.com/jML1u4O.png",Geekdot
 https://stream.ichibantv.com:3764/hybrid/play.m3u8
-#EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://static-cdn.jtvnw.net/jtv_user_pictures/6b97e19f-4243-4d48-b794-ff8cf54d795f-profile_image-300x300.png",Japanim TV
-https://foxkidstv.be:3369/stream/play.m3u8
 #EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://static.kanade.cl/assets/img/profilepic_512px.png",Kanade
 https://backend.energeek.cl/webtv/kanadeweb/index.m3u8?token=ZZDemoIPTVGH
 #EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://i.imgur.com/SRX6EPY.png",Kuriakos Kids
@@ -771,8 +759,6 @@ https://magicstream.ddns.net/magicstream/stream.m3u8
 https://cineverse.g-mana.live/media/ac7cff3c-5bc3-4745-ac4d-56aadb586d00/profile/1/profileManifest.m3u8
 #EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://dominicanchannels.com/wp-content/uploads/tigueritos-tv.jpg",Tiguerito TV ⌛
 https://ss2.tvrdomi.com:1936/tigueritostv/tigueritostv/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_k6spR1AVLZ0ISqrFP-Z9JeBMHPpAc9T-pmFlG6_lSkNw=s160-c-k-c0x00ffffff-no-rj",XilamTV
-https://xilam-animation-1-fr.samsung.wurl.tv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Kidz" tvg-logo="https://i.imgur.com/X2d8y4e.png",Xtrema Cartoons
 https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://i.imgur.com/49ZENis.png",3Cat Plats bruts
@@ -785,12 +771,8 @@ https://acesso.ecast.site:3070/live/awtvlive.m3u8
 https://gsn-cinevault-westerns-2-us.roku.wurl.tv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://i.postimg.cc/0NnRMtn9/classic-tv.jpg",Classic TV
 https://clshls.wns.live/hls/stream.m3u8
-#EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://www.dmi.gov.ae/content/dam/corporate/dev/2023/elogos-ar/dubaizaman.png",Dubai Zaman ⌛
-https://dmiffthftl.cdn.mangomolo.com/dubaizaman/smil:dubaizaman.stream.smil/chunklist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://i.imgur.com/SWO9CKA.png",Persiana Nostalgia
 https://noshls.persiana.live/hls/stream.m3u8
-#EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://i.imgur.com/M40b4YI.png",RetroCrush
-https://cineverse.g-mana.live/media/ac7cff3c-5bc3-4745-ac4d-56aadb586d00/profile/1/profileManifest.m3u8
 #EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://i.imgur.com/XC30JAF.png",Samuel Goldwyn Classics
 https://samuelgoldwyn-classics-1-us.roku.wurl.tv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Classic" tvg-logo="https://i.imgur.com/L6GjoS4.png",Starz Encore Classic East
@@ -813,14 +795,6 @@ https://server.zillarbarta.com/ZBCINEMA/index.m3u8
 https://stream10.xdevel.com/video2s976543-2104/stream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://cbs12.com/resources/media/0c1ecad8-fb09-4bb2-beaa-fc561dfe624a-small21x9_LoomerStill.jpg?1603419052801",30A Loomered TV
 https://30a-tv.com/loomer.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/Hoc3cfO.png",Al Arabiya Programs
-https://d1j4r34gq3qw9y.cloudfront.net/out/v1/96804f3a14864641a21c25e8ca9afb74/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/5dNJlLo.png",Al Jazeera Documentary 🌐
-https://live-hls-apps-ajd-fa.getaj.net/AJD/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/Czxi7yk.png",Asharq Discovery
-https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/v6VsFEt.png",Asharq Documentary
-https://svs.itworkscdn.net/asharqdocumentarylive/asharqdocumentary.smil/playlist_dvr.m3u8
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/JHv0WxM.png",CGTN Documentary
 https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/CGTN_Documentary_logo.png/400px-CGTN_Documentary_logo.png",CGTN Documentary
@@ -867,16 +841,10 @@ https://ptravelhls.persiana.live/hls/stream.m3u8
 https://liveovh010.cda.pl/enc104/polsatviasatnaturehdraw/polsatviasatnaturehdraw.mpd
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Reelz.svg/512px-Reelz.svg.png",Reelz
 https://fl1.moveonjoy.com/REELZ/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/PIBtCEN.jpeg",RL PRO TV
-https://stream.berosat.live:19360/rlpro-tv/rlpro-tv.m3u8
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://iili.io/JGqD21e.png",The Nest
 https://fast-channels.sinclairstoryline.com/THENEST/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://ry7wpjhjwylg7u7.vxdgroup-84jzo19.xyz/logos_4RBUvIk6iXEOn3vNbd3j5PCw3T06yk0G/tv4logohd.png",TV4
 https://dvr3.vokkavideo.xyz/TV4HD/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://tvu.umsa.bo/documents/780216/12171558/Logo+TVU-Int.png/b67c9c61-7516-e38a-a425-72e61f3824c6?t=1751574228493",UMSA TVU Internacional
-https://live.enhdtv.com:8081/8026/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/HQxKLlK.png",Xtrema Animal
-https://stmv6.voxtvhd.com.br/xtremaanimal/xtremaanimal/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Docs" tvg-logo="https://i.imgur.com/ZZxzueO.png",Наука
 https://vod.tuva.ru/nauka2/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.ibb.co/jwM8DFG/2GB-1.png",2GB Sydney
@@ -911,8 +879,6 @@ https://streamvideol1.luxnet.ua/news24/smil:news24.stream.smil/playlist.m3u8
 https://30a-tv.com/gh.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://m.media-amazon.com/images/I/71dgsQwVcNL.png",30A Lionel Nation TV
 https://30a-tv.com/ln.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://cbs12.com/resources/media/0c1ecad8-fb09-4bb2-beaa-fc561dfe624a-small21x9_LoomerStill.jpg?1603419052801",30A Loomered TV
-https://30a-tv.com/loomer.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/YXDeX8q.png",360° Новости
 https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-03-srt.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/agn47sQ.png",360 TV ⌛
@@ -991,74 +957,20 @@ https://mdstrm.com/live-stream-playlist/60b578b060947317de7b57ac.m3u8
 https://5e73cf528f404.streamlock.net/GR_sport/livestream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/ZkBEAp7.png",Advocate Broadcasting Network
 https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_045/Stream/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/r8MmFRX.png",Afghanistan International
-https://hls.afintl.com/hls/stream.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://africa24tv.com/wp-content/uploads/2021/09/logo.png",Africa 24
-https://africa24.vedge.infomaniak.com/livecast/ik:africa24/manifest.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://africa24tv.com/wp-content/uploads/2023/12/logo-Africa24TVEnglish.png",Africa 24 English
 https://edge20.vedge.infomaniak.com/livecast/ik:africa24english/manifest.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i0.wp.com/africa24tv.com/wp-content/uploads/2023/12/LOGO-AFRICASPORT-4-HD-sans-fond.png?fit=512%2C107&ssl=1",Africa 24 Sport
-https://africa24.vedge.infomaniak.com/livecast/ik:africa24sport/manifest.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/5UxU4zc.png",Africanews French
-https://cdn-euronews.akamaized.net/live/eds/africanews-fr/25050/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/svPXoAP.png",Aik News
 https://video.primexsports.com/pnn/live/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/7Kl95WA.png",AKD Calcutta News
 https://cdn-2.pishow.tv/live/237/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/oGto929.png",Akit TV
 https://akittv-live.ercdn.net/akittv/akittv.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/NXFkYFj.png",Al Arabiya
-https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/De4SEWE.png",Al Arabiya Al Hadath ⌛
-https://av.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Hoc3cfO.png",Al Arabiya Programs
-https://d1j4r34gq3qw9y.cloudfront.net/out/v1/96804f3a14864641a21c25e8ca9afb74/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/YMqWEe4.png",Al Araby TV
-https://live.kwikmotion.com/alaraby1live/alaraby_abr/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Gp5mNea.png",Al Araby TV 2
-https://live.kwikmotion.com/alaraby2live/alaraby2.smil/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/7bRVpnu.png",Al Jazeera
-https://live-hls-apps-aja-fa.getaj.net/AJA/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/7bRVpnu.png",Al Jazeera English
 https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/X80DQvF.png",Al Jazeera Mubasher
-https://live-hls-apps-ajm-fa.getaj.net/AJM/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/LMCcIZ2.png",Al Jazeera Mubasher 24
-https://live-hls-apps-ajm24-fa.getaj.net/AJM24/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/nJmi6G6.png",Al Jazeera Mubasher Broadcast 2
-https://live-hls-apps-ajm2-fa.getaj.net/AJM2/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/UeTseMV.png",Al Mamlaka TV
-https://bcovlive-a.akamaihd.net/4109c7ba30fd4a44ad9afe917c67a8c8/eu-central-1/6415809151001/playlist_dvr.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/sOQLV7L.png",Al Manar ⌛
-https://edge.fastpublish.me/live/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/zB2BNnf7/almasartv.png",Al Masar TV
-https://starmenajo.com/hls/almasar/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/V055t5e.png",Al Masirah ⌛
-https://live.cdnbridge.tv/Almasirah/Almasirah_all/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/0xHb3XM.jpg",Al Masirah Mubacher ⌛
-https://live2.cdnbridge.tv/AlmasirahMubasher/Mubasher_All/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/GtQOKeW.png",Al Mayadeen
-https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/c2bwn4G.png",Al Najah News
-https://streaming.najah.edu:8443/hls/AlNajah.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/rBixF3P.png",Al Yaum TV
-https://iko-live.akamaized.net/AlyuamTV/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/PeAcXB9.png",Al-Sharqiya News
-https://5d94523502c2d.streamlock.net/alsharqiyalive/mystream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/mkVSBpHq/alephnews.png",Aleph News
 https://stream-aleph.m.ro/Aleph/ngrp:Alephnewsmain.stream_all/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/xqa87lG.png",Alert ⌛
 https://itv.streams.ovh/ALEERT/ALEERT/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/DyZr1gsv/alhaqeqaaldawlia.png",Alhaqeqa Aldawlia
-https://ghaasiflu.online/alhqeqa/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/tiQp2sR.png",Alhurra
-https://mbn-ingest-worldsafe.akamaized.net/hls/live/2038900/MBN_Alhurra_Worldsafe_HLS/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/fsgQDcN.png",Alhurra Iraq
-https://mbn-ingest-worldsafe.akamaized.net/hls/live/2038899/MBN_Iraq_Worldsafe_HLS/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/GgEeTNr.png",Almahriah TV
-https://starmenajo.com/hls/almahriah/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/Nf6K92Cs/altaghiertv.png",Altaghier TV
-https://jmc-live.ercdn.net/altaghier/altaghier.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="",America's Voice
 https://content.uplynk.com/channel/26bd482ffe364a1282bc3df28bd3c21f.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/snIU1UA.jpg",AMX Noticias ⌛
@@ -1069,12 +981,6 @@ https://cdn.ottlive.co.in/annnews/index.m3u8
 https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/arb-24.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Jdy3WNm.png",Arirang TV UN
 https://amdlive-ch02-ctnd-com.akamaized.net/arirang_2ch/smil:arirang_2ch.smil/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/bqRC3sl.png",Asharq News
-https://bcovlive-a.akamaihd.net/0b75ef0a49e24704a4ca023d3a82c2df/ap-south-1/6203311941001/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/bqRC3sl.png",Asharq News Portrait
-https://bcovlive-a.akamaihd.net/ed81ac1118414d4fa893d3a83ccec9be/eu-central-1/6203311941001/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/M6K8cD3.jpeg",Asharq Radio
-https://svs.itworkscdn.net/asharqradiovlive/asharqradiov/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/LrHGfdC.png",Asianet News
 https://asianetnews.vgcdn.net/ptnr-Embed/v1/manifest/611d79b11b77e2f571934fd80ca1413453772ac7/1c19363c-e4a0-4e4d-ba28-771d5615b88e/9bd4a057-456d-43de-b887-7b87b021f1cc/3.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/19joZ1o.png",Asianet News Kannada ⌛
@@ -1087,8 +993,6 @@ https://tv.streaming.com.bo/atvargentina/index.m3u8
 https://app.ashokadigital.net/badakhabar/badakhabar/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/r4FzxSg.png",Baku TV
 https://raw.githubusercontent.com/UzunMuhalefet/streams/refs/heads/main/myvideo-az/baku-tv.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/ScyTG6P.png",BBC Arabic
-https://vs-cmaf-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.mpd
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/vSz2WEp.png",BBC News (North America)
 https://d2vnbkvjbims7j.cloudfront.net/containerA/LTN/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/vSz2WEp.png",BBC News Asia Pacific
@@ -1101,30 +1005,6 @@ https://vs-cmaf-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_persi
 https://cdn3.wowza.com/5/ZWQ1K2NYTmpFbGsr/BEK-WOWZA-1/smil:BEKPRIMEeast.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/SRDWxRGs/13092012142252.jpg",BeritaSatu English
 https://beritasatu.secureswiftcontent.com/han/beritasatu/bsatu10008/srtoutput/manifest.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/psqIHn4.png",BFM Business
-https://live-cdn-stream-euw1.bfmb.bct.nextradiotv.com/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/bV77l68.png",BFM DICI Alpes du Sud
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_DICI_ALPESDUSUD/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/bV77l68.png",BFM DICI Haute-Provence
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_DICI_HAUTEPROVENCE/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/HE5xP0r.png",BFM Grand Lille
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFMGRANDLILLE/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/j7F9MwH.png",BFM Grand Littoral
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFMGRANDLITTORAL/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/0uiiZRo.png",BFM Lyon
-https://live-cdn-bfmtvlyo-euw1.bfmtv.bct.nextradiotv.com/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/h7t0l6q.png",BFM Marseille
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_MARSEILLEPROV/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/iiVFvIw.png",BFM Nice Côte d'Azur
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_NICECOTEDAZUR/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/WWWQ44G.png",BFM Normandie
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_NORMANDIE/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/FQ0FpXV.png",BFM Tech & Co
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TECHANDCO/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/vp1oVj3.png",BFM Toulon Var
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TOULONVAR/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/YJCcczD.png",BFM TV
-https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Jx1OX9N.png",Bharat24
 https://cdn.ottlive.co.in/bharat24/index.fmp4.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://bharatexpress.com/wp-content/themes/newstrackcms/images/bharat-express-new-logo.png",Bharat Express
@@ -1193,18 +1073,12 @@ https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8
 https://eu1.servers10.com:8081/ceacom/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CGTN.svg/512px-CGTN.svg.png",CGTN
 https://amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/AkFFrS7.png",CGTN Arabic ⌛
-https://arabic-livews.cgtn.com/hls/LSveq57bErWLinBnxosqjisZ220802LSTefTAS9zc9mpU08y3np9TH220802cd/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Poz3xfi.png",CGTN Español
 https://espanol-livews.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/oz0FQsE.png",CGTN Europe
 https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/cgtneurope.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/BwhledK.png",CGTN Français ⌛
-https://francais-livews.cgtn.com/hls/LSvev95OuFZtKLc6CeKEFYXj220802LSTeV6PO0Ut9r71Uq3k5goCA220802cd/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/nDWkCmL.png",CGTN Русский
 https://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Channel8corp.png/480px-Channel8corp.png",Channel 8 Kurdish
-https://live.channel8.com/Channel8-Kurdish/index.fmp4.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/NXD8CPq.png",Chardikla Gurbaani TV
 https://chardikalatimestv.gigabitcdn.net/in-chardikala/chardikala-gurbani-tv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/tvoIZ3o.png",Chardikla Time TV
@@ -1227,8 +1101,6 @@ https://citynewsregional.akamaized.net/hls/live/1024054/Regional_Live_9/master.m
 https://live1.mediadesk.al/cnatvlive.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/awIDugE.png",CNA 🌐
 https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/sSNhk2g.png",CNews 🌐
-https://raw.githubusercontent.com/LeBazarDeBryan/XTVZ_/main/Stream/Live/CNews.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/cfHaLt2.png",Conecta2TV ⌛
 https://live.obslivestream.com/conecta2/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Lz2OlKf.png",Contivision
@@ -1239,8 +1111,6 @@ https://itv.streams.ovh:1936/corfuchannel/corfuchannel/playlist.m3u8
 https://canaletaplus.com:3922/hybrid/play.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/k0WTQKi.png",CVR English
 https://cdn-2.pishow.tv/live/425/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/BH1N6TA.png",Dabanga TV
-https://hls.dabangasudan.org/hls/stream.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/H4f9R7n.png",DD News
 https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/0811cd8c37ca4c409d5385a6cd2fa18b/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/6ML2z17.png",De Ultimo Minuto TV
@@ -1253,16 +1123,12 @@ https://cdn0-03837-liveedge0.dna.ip-only.net/03837-liveedge0/smil:03837-tx4/play
 https://media.streambrothers.com:1936/8276/8276/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/qmRnD0M.png",Digi 24
 https://edge-ar.rcs-rds.ro/digi24ar/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/x1BWb5sh/dijlahtv.png",Dijlah TV
-https://ghaasiflu.online/Dijlah/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/X4QFDhk.png",DİM TV 🌐
 https://live.artidijitalmedya.com/artidijital_dimtv/dimtv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/htHtP9VP/dunyanews.png",Dunya News (INT Feed) ⌛
 https://imob.dunyanews.tv/livehd/ngrp:dunyalivehd_2_all/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/dtrTfZC.png",Dunya News (UK Feed) ⌛
 https://ukintl.dunyanews.tv/liveuk/ngrp:dunyalive_all/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/8MRNFb9.png",DW Arabic
-https://dwamdstream103.akamaized.net/hls/live/2015526/dwstream103/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/8MRNFb9.png",DW English
 https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/8MRNFb9.png",DW Espanol
@@ -1275,8 +1141,6 @@ https://cdn4.skygo.mn/live/disk1/Eagle/HLSv3-FTA/Eagle.m3u8
 https://5a1178b42cc03.streamlock.net/8182/8182/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="",Entertainment Tonight
 https://cbsta49f-cbsta49f-ms.global.ssl.fastly.net/amagi7b98-AmagiMixible/master/amagi7b98-AmagiMixible.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/R5tbzFI.png",Espace TV
-https://edge11.vedge.infomaniak.com/livecast/ik:espacetv/manifest.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ESPNews.svg/512px-ESPNews.svg.png",ESPNews
 https://fl1.moveonjoy.com/ESPN_NEWS/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/HRrkhLq.png",Estrella News
@@ -1291,12 +1155,8 @@ https://live.ipstream.it/etvmarche/etvmarche.stream/playlist.m3u8
 https://live.ipstream.it/etv/etv.stream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/8t9mdg9.png",Euronews English
 https://a-cdn.klowdtv.com/live3/euronews_720p/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/8t9mdg9.png",Euronews French HD
-https://viamotionhsi.netplus.ch/live/eds/euronews/browser-HLS8/euronews.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/ai0BIci.png",Expressen TV
 https://cdn0-03837-liveedge0.dna.ip-only.net/03837-liveedge0/smil:03837-tx2/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/WdMIpsA.png",February Channel
-https://b01c02nl.mediatriple.net/videoonlylive/mtfknklgwrlive/broadcast_5dc818c793576.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.ibb.co/wBwmB1T/iY0osc7.png",Finans Turk TV
 https://yayin30.haber100.com/live/finansturk/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/MUTe7cu.png",First India News ⌛
@@ -1307,24 +1167,16 @@ https://svs.itworkscdn.net/formediatvlive/formediatv.smil/playlist.m3u8
 https://c4635.cdn.xsg.ge/c4635/TVFormula/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://radio.foxnews.com/wp-content/uploads/2017/10/default_logo-150x150.png",Fox News Radio
 https://radiovid.foxnews.com/hls/live/661547/RADIOVID/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/France_24_logo_%282013%29.svg/512px-France_24_logo_%282013%29.svg.png",France 24
-https://viamotionhsi.netplus.ch/live/eds/france24/browser-HLS8/france24.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/France_24_logo_%282013%29.svg/512px-France_24_logo_%282013%29.svg.png",France 24 Arabic
-https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/France_24_logo_%282013%29.svg/512px-France_24_logo_%282013%29.svg.png",France 24 English
 https://live.france24.com/hls/live/2037218-b/F24_EN_HI_HLS/master_5000.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/France_24_logo_%282013%29.svg/512px-France_24_logo_%282013%29.svg.png",France 24 Español
 https://live.france24.com/hls/live/2037220-b/F24_ES_HI_HLS/master_5000.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/eITXz6A.png",Franceinfo
-https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/franceinfotv.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Qq6heRq.png",Free Speech TV
 https://edge.fstv-live-linear-channel.top.comcast.net/Content/HLS_HLSv3/Live/channel(b168a609-19c1-2203-ae1d-6b9726f05e67)/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/FreeDOMUAlogo.svg/512px-FreeDOMUAlogo.svg.png",Freedom (FREEДOM) (UATV)
 https://freedom.cdn-01.cosmonova.net.ua/mobile-app/main/freedom/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://geotez.tv/assets/front/images/tez_logo.png",Geo Tez (576i)
 https://jk3lz82elw79-hls-live.5centscdn.com/newgeonews/07811dc6c422334ce36a09ff5cd6fe71.sdp/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/WzGAIYe.jpg",Géopolis TV
-https://tnt-television.com/Geopolis_tv/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/2Y5qiao.png",Giornale Radio TV
 https://5f204aff97bee.streamlock.net/GR_tv/livestream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://yt3.googleusercontent.com/N017-8I-vc4i_gbztqHFzM9Bap8EWKmsfPBu0HBWM6O4zGX1HBFn5DdLuWcwQLlPQ7F4ej8Mlw=s512-c-k-c0x00ffffff-no-rj",Global News
@@ -1343,8 +1195,6 @@ https://edge1.socialsmart.tv/gtv/bant1/playlist.m3u8
 https://cdn-haber61tv.yayin.com.tr/haber61tv/smil:haber61tv.smil/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/fbQQPsGB/haberglobal.png",Haber Global ⌛
 https://tv.ensonhaber.com/haberglobal/haberglobal.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://m.media-amazon.com/images/I/51bJg+c7vRL.png",Haiti News Channel
-https://haititivi.com/website/haitinews/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/xM0HA30.png",Halk TV
 https://halktv-live.daioncdn.net/halktv/halktv.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.ibb.co/JcD2xck/logo-hamda.png",Hamdard TV
@@ -1363,18 +1213,12 @@ https://cdn-1.pishow.tv/live/280/master.m3u8
 https://ott.livelegitpro.in:9899/hnnnews/hnnnews/tracks-v1/index.fmp4.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/oVNjFoj.png",HollyWire
 https://bozztv.com/hwotta/playlist/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/LOGO_i24NEWS.png/512px-LOGO_i24NEWS.png",I24 News Arabic
-https://bcovlive-a.akamaihd.net/95116e8d79524d87bf3ac20ba04241e3/eu-central-1/5377161796001/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/LOGO_i24NEWS.png/512px-LOGO_i24NEWS.png",I24 News English
 https://bcovlive-a.akamaihd.net/ecf224f43f3b43e69471a7b626481af0/eu-central-1/5377161796001/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/LOGO_i24NEWS.png/512px-LOGO_i24NEWS.png",I24 News French
-https://bcovlive-a.akamaihd.net/41814196d97e433fb401c5e632d985e9/eu-central-1/5377161796001/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://www.i24news.tv/images/favicon.png",i24NEWS Hebrew
 https://bcovlive-a.akamaihd.net/d89ede8094c741b7924120b27764153c/eu-central-1/5377161796001/profile_0/chunklist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/2LbR2a0.png",IBC 24
 https://cdn-3.pishow.tv/live/220/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/ICI_RDI_logo.svg/512px-ICI_RDI_logo.svg.png",ICI RDI
-https://rcavlive.akamaized.net/hls/live/704025/xcanrdi/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/3IoC5QR.png",India News Madhya Pradesh/Chhattisgarh
 https://livetv.newsx.com/itv/itvnetwork7/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/bJ3J8d8z/indiatoday.png",India Today ⌛
@@ -1385,8 +1229,6 @@ https://pl-indiatvnews.akamaized.net/out/v1/db79179b608641ceaa5a4d0dd0dca8da/ind
 https://43wrzjnpqoxe-hls-live.wmncdn.net/indywood/indywoodtv/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/IV1O11i.png",INews
 https://cdn-1.pishow.tv/live/411/master.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/sfHXNBwm/inews.png",iNEWS TV
-https://live.i-news.tv/hls/stream.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/P1ZbVRg.png",Informatia TV
 https://informatia.streamnet.ro/mobile_tv/informatiatv.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/a7h9epj.png",InfoWars Network
@@ -1407,30 +1249,16 @@ https://knews.livebox.co.in/youtubehls/live.m3u8
 https://cdn-3.pishow.tv/live/1469/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/LOi9yma.png",Kohavision
 https://gjirafa-video-live.gjirafa.net/gjvideo-livestream/lj9-pxm-o53-rp0/tracks-v4a1/mono.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/OyMxcRG.png",Kolalnas TV
-https://htvint.mada.ps/kolalnas/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.ibb.co/WkrLDJW/Screenshot-20230714-135036-removebg-preview.png",Korea TV
 https://hlive.ktv.go.kr/live/klive_h.stream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/27/WWAY_logo.png",KTRK TV ABC 13 News
 https://content.uplynk.com/channel/ext/1efe3bfc4d1e4b5db5e5085a535b510b/ktrk_24x7_news.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/hB57mNh.png",KTV 2
 https://kwtktv2ta.cdn.mangomolo.com/ktv2/smil:ktv2.stream.smil/chunklist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/erZ0Ol1.png",KTV News
-https://kwtkbta.cdn.mangomolo.com/kb/smil:kb.stream.smil/chunklist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/Kj94xjPP/kurdsatnews.png",Kurdsat News
-https://hlspackager.akamaized.net/live/DB/KURDSAT_NEWS/HLS/KURDSAT_NEWS.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://www.omnys.com/media/news/lac-news24-icona.png",LaC News 24
 https://f5842579ff984c1c98d63b8d789673eb.msvdn.net/live/S27391994/HVvPMzy/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/bQfQeEA.jpeg",Lahore News ⌛
 https://vcdn.dunyanews.tv/lahorelive/ngrp:lnews_1_all/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/DED8EXs.png",LCI
-https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/btv/py/lci1.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/DED8EXs.png",LCI HD
-https://viamotionhsi.netplus.ch/live/eds/lci/browser-dash/lci.mpd
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/OK20oyl.png",Le Media TV
-https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/lemedia.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/QCKvxn5f/lemanbleu.png",Leman Bleu
-https://viamotionhsi.netplus.ch/live/eds/lemanbleu/browser-HLS8/lemanbleu.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/fc5IHSy.png",Lenca Television Canal 40 ⌛
 https://lencatelevision.com/hls/stream.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/lWeJxm0.png",Life TV ⌛
@@ -1439,24 +1267,16 @@ https://live.artidijitalmedya.com/artidijital_lifetv/lifetv/playlist.m3u8
 https://lingkartv.my.id/hls/lingkartv.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/1JnyzHv.png",LiveNOW from FOX 🌐
 https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00488-foxdigital-livenowbyfox-lgus/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/1EkZRwn.png",LN24
-https://live-ln24.digiteka.com/1911668011/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Hg5YTwu.png",LN24SA
 https://cdnstack.internetmultimediaonline.org/ln24/ln24.stream/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/4WfnEaj.png",Lyon Capitale TV
-https://raw.githubusercontent.com/Sibprod/streams/main/ressources/dm/py/hls/lyoncapitale.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/RzAkP1V.png",M95 Televisión Marbella ⌛
 https://limited2.todostreaming.es/live/m95-livestream.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/RVtQTed.png",Makan 33
-https://makan.media.kan.org.il/hls/live/2024680/2024680/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/M92IDhq.png",Malai Murasu TV ⌛
 https://cdn-3.pishow.tv/live/1606/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/oOb7d7R.png",Media One
 https://cdn-3.pishow.tv/live/1481/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/CaA7l86.png",Mega TV ⌛
 https://ott3.streann.com/loadbalancer/services/public/channels-secure/5e62b96e2cdcfac2dd8885dd/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/85dghYss/mekameleentv.png",Mekameleen TV
-https://mn-nl.mncdn.com/mekameleen/smil:mekameleentv.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/PaAacxF.png",Mereja TV ⌛
 https://rumble.com/live-hls-dvr/4c14o3/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/aiiinzg.png",Metro Globe Network ⌛
@@ -1469,16 +1289,12 @@ https://5db313b643fd8.streamlock.net/MinformoTV/MinformoTV/playlist.m3u8
 https://bit.controlstreams.com:5443/LiveApp/streams/mirametv.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/gMVqbwU.png",MNC
 https://cdn4.skygo.mn/live/disk1/MNCTV/HLSv3-FTA/MNCTV.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/FPyPaL1.png",Monaco Info
-https://webtv.monacoinfo.com/live/prod/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/3l25EZI.png",Moon TV
 https://player.mslivestream.net/mslive/e10bb900976df9177b9a080314f26f86.sdp/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/ZO8ShOK.png",MTV Uutiset
 https://live.streaming.a2d.tv/asset/20025962.isml/.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/jX0lqy3.png",Multivision Federal
 https://panel.host-live.com:19360/8250/8250.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/GoLhaDK.png",Nablus TV
-https://htvint.mada.ps/nabluslive/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/9OFdMud.png",Naftemporiki TV
 https://stream-188125.castr.net/631af9c016e5eace19ff9a5b/live_048998706a2311ee83b33fe7fbad252d/index.fmp4.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/NBC_logo_2022_%28vertical%29.svg/512px-NBC_logo_2022_%28vertical%29.svg.png",NBC 2 Orlando FL (WESH)
@@ -1563,18 +1379,12 @@ https://a-cdn.herringnetwork.com/affiliate/oane/playlist.m3u8
 https://live1ag.antenaplay.ro/live_ObservatorNews/live_ObservatorNews.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/e9ca6gc.png",Olay Türk TV Kayseri 🌐
 https://live.artidijitalmedya.com/artidijital_olayturk/olayturk/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/VkqCSqcg/omantvmubashir.png",Oman Mubashir
-https://partwota.cdn.mgmlcdn.com/omlive/smil:omlive.stream.smil/chunklist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/mUrZz9O.png",Onda 15 TV
 https://cloudvideo.servers10.com:8081/8034/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/6HxLUQd.png",Onda Valencia
 https://cloudvideo.servers10.com:8081/8116/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Ora_News_%28Albania%29.svg/512px-Ora_News_%28Albania%29.svg.png",Ora News
 https://live1.mediadesk.al/oranews.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/HLTzPPkf/palestinealyawm.png",Palestine Al Yawm
-https://live.paltodaytv.com/paltv/live/playlist_sfm4s.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/BS8XXug.png",Palestine Today 🌐
-https://live.paltodaytv.com/paltv/live/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/wvvV9yJ2/palitranews.png",Palitra News ⌛
 https://live.palitranews.ge/hls/palitratv/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/DZLrc9VV/payamtv.png",Payam TV ⌛
@@ -1587,8 +1397,6 @@ https://cdn.jmvstream.com/w/LVW-9591/LVW9591_PmXtgATnaS/playlist.m3u8
 https://livelegitpro.in/hls2/newstime/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/jbm2S9O.jpg",Prensa Latina TV
 https://eu1.servers10.com:8081/8192/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Press_TV_logo.svg/250px-Press_TV_logo.svg.png",Press TV French
-https://live4.presstv.ir/live/smil:presstvfr.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="",Pro TV News
 https://cmero-ott-live.ssl.cdn.cra.cz/channels/cme-ro-voyo-news/playlist.m3u8?offsetSeconds=0&url=0
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/DG0x4UD.png",Prudent Media
@@ -1625,8 +1433,6 @@ https://g5nl6xoalpq6-hls-live.5centscdn.com/rdxgoa/d0dbe915091d400bd8ee7f27f0791
 https://bk7l298nyx53-hls-live.5centscdn.com/realnews/e7dee419f91aa9e65939d3677fb9c4f5.sdp/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/A8TRPrF.png",Red de Comunicación Regional (RCR) ⌛
 https://5c3fb01839654.streamlock.net:1963/iptvrcrperu/livercrperutv/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/bWwY885.png",Red TV Lebanon
-https://live.kwikmotion.com/redtvlive/redtv.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/kuqkTMC.png",Red+
 https://inforedvos.lcdn.claro.net.co/Content/HLS_HLS_DIR/Live/channel(REDMASHDWEB)/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/t794qkT.png",Redseat The First
@@ -1661,16 +1467,10 @@ https://sabconetanw.cdn.mangomolo.com/news/smil:news.stream.smil/master.m3u8
 https://6n3yow8pl9ok-hls-live.5centscdn.com/sadhananewstv/live.stream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/8FZsNyK.png",SC Currents
 https://reflect-communitytv.cablecast.tv/live-5/live/stream-3/live.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/PJdsTyx8/shamstv.png",Shams TV
-https://stream.shams.tv/hls/stream.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/9jcV9oG.png",Silverbird News 24
 https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_029/Stream/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/SvjU4h6.png",Sky News Arabia
 https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/SvjU4h6.png",Sky News Arabia ⌛
-https://stream.skynewsarabia.com/ott/ott.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/FjtzQQs.png",Sky News Arabia (Portrait) ⌛
-https://stream.skynewsarabia.com/vertical/vertical.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/FjtzQQs.png",Sky News Arabia Vertical
 https://live-stream.skynewsarabia.com/c-vertical-channel/vertical-stream/index.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/ZsPb8nL.png",Sky News Extra 1
@@ -1691,8 +1491,6 @@ https://s-pl-01.mediatool.tv/playout/sepl-abr/index.m3u8
 https://cdn-2.pishow.tv/live/465/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/5tYL46mq/syri.png",Syri
 https://stream.syritv.al/SyriTV/index.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.postimg.cc/5thv6b7c/syriatv.png",Syria TV
-https://live.kwikmotion.com/syriatvlive/syriatv.smil/playlist_dvr.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/LYjTtyh.png",T News
 https://cdn-1.pishow.tv/live/385/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/h7HfsLx.png",TDM Info. Macau ⌛
@@ -1727,8 +1525,6 @@ https://live.topnews.co.th/hls/topnews_a_720.m3u8
 https://content.uplynk.com/channel/33c48f602cfd4474b957eb4ad999caf8.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/iwJ42rD.png",TRA 2
 https://live20.bozztv.com/akamaissh101/ssh101/rctvhdtra/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/dEfI2M9.png",TRT Arabi ⌛
-https://tv-trtarabi.medya.trt.com.tr/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TRT_Haber_Eyl%C3%BCl_2020_Logo.svg/512px-TRT_Haber_Eyl%C3%BCl_2020_Logo.svg.png",TRT Haber
 https://tv-trthaber.medya.trt.com.tr/master.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TRT_World.svg/512px-TRT_World.svg.png",TRT World ⌛
@@ -1751,8 +1547,6 @@ https://video01.logicahost.com.br/tvdopovo1/tvdopovo1/playlist.m3u8
 https://panel.host-live.com:19360/8042/8042.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/UWMHnOG.png",TV Jadran ⌛
 https://tvjadran.stream.agatin.hr:3412/live/tvjadranlive.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/zZJzNjM.jpeg",TV La Capitale
-https://stream.berosat.live:19360/tv-capitale-tream/tv-capitale-tream.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://play-lh.googleusercontent.com/7kD2A0jUqWrVMxd_15RAPt9S0P9pxPMpNEc9dHOSl8Bi0DOMVlQHijXaL7ppUC5F46g",TV Modelo
 https://video09.logicahost.com.br/tvmodelo/tvmodelo/playlist.m3u
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://duckduckgo.com/i/e408ea02.png",TV Paraense
@@ -1793,14 +1587,10 @@ https://videoserver.tmcreativos.com:19360/visionnoticias/visionnoticias.m3u8
 https://voa-ingest.akamaized.net/hls/live/2033876/tvmc07/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/rtRnlqN.png",VOA TV Africa
 https://voa-ingest.akamaized.net/hls/live/2033874/tvmc06/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/f8WcqRY.png",Voice of Lebanon
-https://svs.itworkscdn.net/vdltvlive/vdltv.smil/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/X5hyKU8.png",VPItv
 https://ott3.streann.com/loadbalancer/services/public/channels/5d23d5882cdce61dae029fd8/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/9/98/NewsNetLogo2022.png",W14DK-D 14.2 NEWSNET
 https://2-fss-2.streamhoster.com/pl_118/204972-1954106-1/playlist.m3u8
-#EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://avatars.githubusercontent.com/u/213803648?s=400&u=e27c09d39f813b9698de9c6559cbf7f196bf6fce&v=4",Welat TV (1080i)
-https://stream.badinan.xyz/welat/tv/playlist.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/s4TZoxx.png",WELT
 https://viamotionhsi.netplus.ch/live/eds/n24/browser-HLS8/n24.m3u8
 #EXTINF:-1 group-title="GEN ↬ Déprime" tvg-logo="https://i.imgur.com/Wc5Z3iS.png",WION
