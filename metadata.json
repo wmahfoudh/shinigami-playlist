@@ -1,0 +1,5 @@
+{
+  "description": "v.1.4 improving regex, improving bad urls handling\nv1.3 fixing check status loop\nv1.2 clear all fix, added regex find/replace\nv1.1 fixed layout and clear dupes\nv1.0 Shinigami Playlist is a fully client side web application that\nallows users to import, merge, edit, clean, organize, and export\nIPTV playlists.",
+  "requestFramePermissions": [],
+  "name": "Shinigami Playlist 1.5"
+}

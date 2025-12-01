@@ -1,4 +1,5 @@
 specs/
+node_modules/
 
 # Logs
 logs
