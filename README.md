@@ -1,7 +1,7 @@
 # Shinigami Playlist
 
-![Logo](./logo.svg)
-
+<img src="./logo.svg" alt="Logo" width="200">
+    
 **The Client-Side M3U Manager.**
 
 Shinigami Playlist is a modern, privacy-first web application designed to help you manage, clean, and organize your IPTV playlists directly in your browser. No backend server, no data uploads, no AI—just you and your media.
