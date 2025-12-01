@@ -1,5 +1,6 @@
 specs/
 node_modules/
+.vite/
 
 # Logs
 logs
