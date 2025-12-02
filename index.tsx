@@ -22,7 +22,11 @@ import {
   X,
   Regex,
   ChevronUp,
-  RotateCcw
+  RotateCcw,
+  GripVertical,
+  ArrowUp,
+  ArrowDown,
+  ArrowUpDown
 } from 'lucide-react';
 
 // --- Types ---
@@ -235,9 +239,15 @@ const HelpModal = ({ onClose }: { onClose: () => void }) => (
             </li>
             <li><strong>Regrouping:</strong> Create standardized group names using patterns.
               <div className="mt-1 bg-gray-100 dark:bg-dark-bg p-2 rounded font-mono text-xs">
-                Pattern: {'{tag}'} {'>'} {'{group}'}<br/>
+                Pattern: {'{tag}'} &gt; {'{group}'}<br/>
                 Result: FR &gt; News
               </div>
+            </li>
+            <li><strong>Sorting:</strong>
+                <ul className="list-disc pl-5 mt-1">
+                    <li><strong>Bulk Sort:</strong> Click the column headers (Name, Group, Tag) to sort the entire playlist A-Z or Z-A.</li>
+                    <li><strong>Manual Sort:</strong> Drag and drop the handle icon <GripVertical size={12} className="inline"/> at the end of any row to reorder manually.</li>
+                </ul>
             </li>
           </ul>
         </section>
@@ -273,10 +283,16 @@ const App = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   // UI State
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // Default to Dark Mode
   const [showHelp, setShowHelp] = useState(false);
   const [isBulkPanelOpen, setIsBulkPanelOpen] = useState(false);
   const [showExportMenu, setShowExportMenu] = useState(false);
+
+  // Sorting State
+  const [sortConfig, setSortConfig] = useState<{key: keyof Channel | null, direction: 'asc' | 'desc'}>({
+    key: null,
+    direction: 'asc'
+  });
 
   // Filters
   const [filters, setFilters] = useState<FilterState>({
@@ -294,13 +310,7 @@ const App = () => {
   const [useRegex, setUseRegex] = useState(false);
   const [regroupPattern, setRegroupPattern] = useState('{tag} {group}');
 
-  // Theme Init
-  useEffect(() => {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setDarkMode(true);
-    }
-  }, []);
-
+  // Theme Init - Effect to toggle class based on state
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -476,37 +486,112 @@ const App = () => {
     }));
   };
 
+  // --- Sorting & Moving ---
+
+  const handleSort = (key: keyof Channel) => {
+    saveHistory();
+    
+    let direction: 'asc' | 'desc' = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+
+    setSortConfig({ key, direction });
+
+    setPlaylist(prev => {
+      const sorted = [...prev].sort((a, b) => {
+        const valA = (a[key] || '').toString().toLowerCase();
+        const valB = (b[key] || '').toString().toLowerCase();
+        
+        if (valA < valB) return direction === 'asc' ? -1 : 1;
+        if (valA > valB) return direction === 'asc' ? 1 : -1;
+        return 0;
+      });
+      return sorted;
+    });
+  };
+
+  const handleMoveChannel = (sourceId: string, targetId: string) => {
+    if (sourceId === targetId) return;
+    saveHistory();
+
+    setPlaylist(prev => {
+      const newPlaylist = [...prev];
+      const sourceIndex = newPlaylist.findIndex(c => c.id === sourceId);
+      const targetIndex = newPlaylist.findIndex(c => c.id === targetId);
+      
+      if (sourceIndex === -1 || targetIndex === -1) return prev;
+
+      const [removed] = newPlaylist.splice(sourceIndex, 1);
+      newPlaylist.splice(targetIndex, 0, removed);
+      
+      return newPlaylist;
+    });
+  };
+
   const checkStatus = async () => {
     const selectedChannels = playlist.filter(c => c.selected);
     if (selectedChannels.length === 0) {
       alert("Please select channels to check.");
       return;
     }
-    // Status checking doesn't really need Undo as it updates metadata, but we could allow it.
-    // I'll skip saving history for status checks to keep history relevant for "destructive" edits.
     
     setLoading(true);
     const BATCH_SIZE = 5;
     const tempPlaylist = [...playlist]; 
 
+    // Check if we are in a secure context (HTTPS) to handle Mixed Content logic
+    const isSecureContext = window.location.protocol === 'https:';
+
     for (let i = 0; i < selectedChannels.length; i += BATCH_SIZE) {
       const batch = selectedChannels.slice(i, i + BATCH_SIZE);
       await Promise.all(batch.map(async (channel) => {
         try {
-          if (!channel.url.toLowerCase().startsWith('http')) {
+          const urlLower = channel.url.toLowerCase();
+          
+          // 1. Check for Mixed Content (HTTPS App -> HTTP Stream)
+          // Browsers block this immediately. We cannot check status.
+          // Mark as 'unknown' (Grey) so user knows we didn't fail, we just couldn't check.
+          if (isSecureContext && urlLower.startsWith('http:')) {
+             const index = tempPlaylist.findIndex(c => c.id === channel.id);
+             if (index !== -1) tempPlaylist[index] = { ...tempPlaylist[index], status: 'unknown' };
+             return;
+          }
+
+          if (!urlLower.startsWith('http')) {
              const index = tempPlaylist.findIndex(c => c.id === channel.id);
              if (index !== -1) tempPlaylist[index] = { ...tempPlaylist[index], status: 'unknown' };
              return;
           }
 
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 5000); 
-          const res = await fetch(channel.url, { method: 'HEAD', signal: controller.signal });
-          clearTimeout(timeoutId);
-          const index = tempPlaylist.findIndex(c => c.id === channel.id);
-          if (index !== -1) {
-            tempPlaylist[index] = { ...tempPlaylist[index], status: res.ok ? 'online' : 'offline' };
+          const timeoutId = setTimeout(() => controller.abort(), 10000); // Increased to 10s
+          
+          try {
+            // Attempt 1: Standard HEAD request
+            const res = await fetch(channel.url, { method: 'HEAD', signal: controller.signal });
+            clearTimeout(timeoutId);
+            
+            const index = tempPlaylist.findIndex(c => c.id === channel.id);
+            if (index !== -1) {
+              tempPlaylist[index] = { ...tempPlaylist[index], status: res.ok ? 'online' : 'offline' };
+            }
+          } catch (headError) {
+            clearTimeout(timeoutId);
+            
+            // Attempt 2: Fallback to 'no-cors' GET
+            const controller2 = new AbortController();
+            const timeoutId2 = setTimeout(() => controller2.abort(), 10000); 
+            
+            await fetch(channel.url, { method: 'GET', mode: 'no-cors', signal: controller2.signal });
+            clearTimeout(timeoutId2);
+
+            const index = tempPlaylist.findIndex(c => c.id === channel.id);
+            if (index !== -1) {
+              tempPlaylist[index] = { ...tempPlaylist[index], status: 'online' };
+            }
           }
+
         } catch (e) {
           const index = tempPlaylist.findIndex(c => c.id === channel.id);
           if (index !== -1) {
@@ -907,16 +992,50 @@ const App = () => {
                   <CheckSquare size={16} className="text-gray-300 dark:text-gray-600 mx-auto" />
                 </th>
                 <th className="p-4 w-16 text-center">Status</th>
-                <th className="p-4 w-1/4">Name</th>
-                <th className="p-4 w-1/5">Group</th>
-                <th className="p-4 w-32">Tag</th>
+                <th 
+                  className="p-4 w-1/4 cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors select-none"
+                  onClick={() => handleSort('name')}
+                >
+                  <div className="flex items-center gap-1">
+                    Name 
+                    {sortConfig.key === 'name' && (
+                       sortConfig.direction === 'asc' ? <ArrowUp size={14} className="text-brand-500"/> : <ArrowDown size={14} className="text-brand-500"/>
+                    )}
+                    {sortConfig.key !== 'name' && <ArrowUpDown size={12} className="opacity-20"/>}
+                  </div>
+                </th>
+                <th 
+                  className="p-4 w-1/5 cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors select-none"
+                  onClick={() => handleSort('group')}
+                >
+                  <div className="flex items-center gap-1">
+                    Group
+                    {sortConfig.key === 'group' && (
+                       sortConfig.direction === 'asc' ? <ArrowUp size={14} className="text-brand-500"/> : <ArrowDown size={14} className="text-brand-500"/>
+                    )}
+                    {sortConfig.key !== 'group' && <ArrowUpDown size={12} className="opacity-20"/>}
+                  </div>
+                </th>
+                <th 
+                  className="p-4 w-32 cursor-pointer hover:bg-gray-100 dark:hover:bg-dark-bg transition-colors select-none"
+                  onClick={() => handleSort('tag')}
+                >
+                  <div className="flex items-center gap-1">
+                    Tag
+                    {sortConfig.key === 'tag' && (
+                       sortConfig.direction === 'asc' ? <ArrowUp size={14} className="text-brand-500"/> : <ArrowDown size={14} className="text-brand-500"/>
+                    )}
+                    {sortConfig.key !== 'tag' && <ArrowUpDown size={12} className="opacity-20"/>}
+                  </div>
+                </th>
                 <th className="p-4">Source</th>
+                <th className="p-4 w-10"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100 dark:divide-gray-800 text-sm">
               {filteredPlaylist.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-16 text-center">
+                  <td colSpan={7} className="p-16 text-center">
                     <div className="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                       <Layers size={48} className="mb-4 opacity-20" />
                       <p className="text-lg font-medium">No channels found</p>
@@ -929,6 +1048,20 @@ const App = () => {
                   <tr 
                     key={channel.id} 
                     className={`group transition-colors ${channel.selected ? 'bg-brand-50 dark:bg-brand-900/10' : 'hover:bg-gray-50 dark:hover:bg-dark-bg/50'}`}
+                    draggable={true}
+                    onDragStart={(e) => {
+                      e.dataTransfer.setData("text/plain", channel.id);
+                      e.dataTransfer.effectAllowed = "move";
+                    }}
+                    onDragOver={(e) => {
+                       e.preventDefault(); // Necessary to allow dropping
+                       e.dataTransfer.dropEffect = "move";
+                    }}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      const sourceId = e.dataTransfer.getData("text/plain");
+                      handleMoveChannel(sourceId, channel.id);
+                    }}
                   >
                     <td className="p-4 text-center">
                       <input 
@@ -969,6 +1102,9 @@ const App = () => {
                     </td>
                     <td className="p-4 text-gray-400 text-xs truncate max-w-[150px]" title={channel.source}>
                       {channel.source}
+                    </td>
+                    <td className="p-4 text-center cursor-move text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                      <GripVertical size={16} />
                     </td>
                   </tr>
                 ))
